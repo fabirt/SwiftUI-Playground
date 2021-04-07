@@ -8,70 +8,104 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var show = false
+    @State var isDragging = false
     @State var dragTranslation = CGSize.zero
+    @State var showCardDetail = false
     
     var body: some View {
-        ZStack {
+        let dragGesture = DragGesture()
+            .onChanged { value in
+                guard !self.showCardDetail else {
+                    return
+                }
+                
+                self.isDragging = true
+                self.dragTranslation = value.translation
+            }
+            .onEnded { value in
+                self.isDragging = false
+                self.dragTranslation = .zero
+            }
+        
+        let longPressGesture = LongPressGesture()
+            .onEnded { value in
+                self.isDragging = true
+            }
+        
+        _ = longPressGesture.sequenced(before: dragGesture)
+        
+        return ZStack {
             TitleView()
-                .blur(radius: show ? 10.0 : 0)
-                .animation(.default)
+                .blur(radius: isDragging ? 10.0 : 0)
+                .opacity(showCardDetail ? 0.4 : 1)
+                .offset(y: showCardDetail ? -100 : 0)
+                .animation(
+                    Animation.default
+                        .delay(0.1)
+                    //.speed(2)
+                    //.repeatForever()
+                )
             
             ZStack {
-                BackCardView(backgroundColor: Color("card4"))
-                    .offset(x: 0, y: show ? -400 : -40.0)
+                BackCardView(
+                    width: showCardDetail ? 300 : 340,
+                    backgroundColor: Color("card4"))
+                    .offset(x: 0, y: isDragging ? -400 : -40.0)
                     .offset(dragTranslation)
-                    .scaleEffect(0.9)
-                    .rotationEffect(.degrees(show ? 0 : 10))
+                    .offset(y: showCardDetail ? -160 : 0)
+                    .scaleEffect(showCardDetail ? 1 : 0.9)
+                    .rotationEffect(.degrees(isDragging ? 0 : 10))
+                    .rotationEffect(.degrees(showCardDetail ? -10 : 0))
                     .rotation3DEffect(
-                        .degrees(10),
+                        .degrees(showCardDetail ? 0 : 10),
                         axis: (x: 10.0, y: 0.0, z: 0.0)
                     )
                     .blendMode(.hardLight)
                     .animation(.easeInOut(duration: 0.5))
                 
-                BackCardView(backgroundColor: Color("card3"))
-                    .offset(x: 0, y: show ? -200 : -20.0)
+                BackCardView(
+                    width: 340,
+                    backgroundColor: Color("card3"))
+                    .offset(x: 0, y: isDragging ? -200 : -20.0)
                     .offset(dragTranslation)
-                    .scaleEffect(0.95)
-                    .rotationEffect(.degrees(show ? 0 : 5))
+                    .offset(y: showCardDetail ? -130 : 0)
+                    .scaleEffect(showCardDetail ? 1 : 0.95)
+                    .rotationEffect(.degrees(isDragging ? 0 : 5))
+                    .rotationEffect(.degrees(showCardDetail ? -5 : 0))
                     .rotation3DEffect(
-                        .degrees(5),
+                        .degrees(showCardDetail ? 0 : 5),
                         axis: (x: 10.0, y: 0.0, z: 0.0)
                     )
                     .blendMode(.hardLight)
                     .animation(.easeInOut(duration: 0.3))
                 
                 CardView()
-                    .offset(dragTranslation)
-                    .blendMode(.hardLight)
-                    .onTapGesture {
-                        self.show.toggle()
-                    }
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                self.show = true
-                                self.dragTranslation = value.translation
-                            }
-                            .onEnded { value in
-                                let animation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0)
-                                withAnimation(animation) {
-                                    self.show = false
-                                    self.dragTranslation = .zero
-                                }
-                            }
+                    .frame(width: showCardDetail ? .infinity : 340, height: 220)
+                    .background(Color.black)
+                    .clipShape(
+                        RoundedRectangle(cornerRadius: showCardDetail ? 30 : 20, style: .continuous
+                        )
                     )
+                    .shadow(radius: 20)
+                    .offset(dragTranslation)
+                    .offset(y: showCardDetail ? -100 : 0)
+                    .blendMode(.hardLight)
+                    .animation(Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
+                    .onTapGesture {
+                        self.showCardDetail.toggle()
+                    }
+                    .gesture(dragGesture)
             }
-            .zIndex(show ? 4 : 2)
+            .zIndex(isDragging ? 4 : 2)
             .frame(
                 maxWidth: .infinity,
                 maxHeight: .infinity)
             
             BottomCardView()
+                .offset(y: showCardDetail ? 360 : 1000)
+                .blur(radius: isDragging ? 10.0 : 0)
                 .zIndex(3)
-                .blur(radius: show ? 10.0 : 0)
-                .animation(.default)
+                .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8))
         }
     }
 }
@@ -104,21 +138,18 @@ struct CardView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 300, height: 110, alignment: .top)
         }
-        .frame(width: 340, height: 220)
-        .background(Color.black)
-        .cornerRadius(20)
-        .shadow(radius: 20)
     }
 }
 
 struct BackCardView: View {
+    var width: CGFloat
     var backgroundColor: Color = Color.blue
     
     var body: some View {
         VStack {
             Spacer()
         }
-        .frame(width: 340, height: 220)
+        .frame(width: width, height: 220)
         .background(backgroundColor)
         .cornerRadius(20)
         .shadow(radius: 20)
@@ -159,6 +190,5 @@ struct BottomCardView: View {
         .background(Color.white)
         .cornerRadius(20)
         .shadow(radius: 20)
-        .offset(y: 520)
     }
 }
