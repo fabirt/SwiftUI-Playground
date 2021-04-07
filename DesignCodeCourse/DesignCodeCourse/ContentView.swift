@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var show = false
+    @State var dragTranslation = CGSize.zero
     
     var body: some View {
         ZStack {
@@ -19,6 +20,7 @@ struct ContentView: View {
             ZStack {
                 BackCardView(backgroundColor: Color("card4"))
                     .offset(x: 0, y: show ? -400 : -40.0)
+                    .offset(dragTranslation)
                     .scaleEffect(0.9)
                     .rotationEffect(.degrees(show ? 0 : 10))
                     .rotation3DEffect(
@@ -30,6 +32,7 @@ struct ContentView: View {
                 
                 BackCardView(backgroundColor: Color("card3"))
                     .offset(x: 0, y: show ? -200 : -20.0)
+                    .offset(dragTranslation)
                     .scaleEffect(0.95)
                     .rotationEffect(.degrees(show ? 0 : 5))
                     .rotation3DEffect(
@@ -40,16 +43,33 @@ struct ContentView: View {
                     .animation(.easeInOut(duration: 0.3))
                 
                 CardView()
+                    .offset(dragTranslation)
                     .blendMode(.hardLight)
                     .onTapGesture {
                         self.show.toggle()
                     }
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                self.show = true
+                                self.dragTranslation = value.translation
+                            }
+                            .onEnded { value in
+                                let animation = Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0)
+                                withAnimation(animation) {
+                                    self.show = false
+                                    self.dragTranslation = .zero
+                                }
+                            }
+                    )
             }
+            .zIndex(show ? 4 : 2)
             .frame(
                 maxWidth: .infinity,
                 maxHeight: .infinity)
             
             BottomCardView()
+                .zIndex(3)
                 .blur(radius: show ? 10.0 : 0)
                 .animation(.default)
         }
