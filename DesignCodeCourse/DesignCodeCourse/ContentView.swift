@@ -11,9 +11,10 @@ struct ContentView: View {
     @State var isDragging = false
     @State var dragTranslation = CGSize.zero
     @State var showCardDetail = false
+    @State var bottomCardTranslation = CGSize.zero
     
     var body: some View {
-        let dragGesture = DragGesture()
+        let cardDragGesture = DragGesture()
             .onChanged { value in
                 guard !self.showCardDetail else {
                     return
@@ -32,82 +33,98 @@ struct ContentView: View {
                 self.isDragging = true
             }
         
-        _ = longPressGesture.sequenced(before: dragGesture)
+        _ = longPressGesture.sequenced(before: cardDragGesture)
         
-        return ZStack {
-            TitleView()
-                .blur(radius: isDragging ? 10.0 : 0)
-                .opacity(showCardDetail ? 0.4 : 1)
-                .offset(y: showCardDetail ? -100 : 0)
-                .animation(
-                    Animation.default
-                        .delay(0.1)
-                    //.speed(2)
-                    //.repeatForever()
-                )
-            
-            ZStack {
-                BackCardView(
-                    width: showCardDetail ? 300 : 340,
-                    backgroundColor: Color("card4"))
-                    .offset(x: 0, y: isDragging ? -400 : -40.0)
-                    .offset(dragTranslation)
-                    .offset(y: showCardDetail ? -160 : 0)
-                    .scaleEffect(showCardDetail ? 1 : 0.9)
-                    .rotationEffect(.degrees(isDragging ? 0 : 10))
-                    .rotationEffect(.degrees(showCardDetail ? -10 : 0))
-                    .rotation3DEffect(
-                        .degrees(showCardDetail ? 0 : 10),
-                        axis: (x: 10.0, y: 0.0, z: 0.0)
-                    )
-                    .blendMode(.hardLight)
-                    .animation(.easeInOut(duration: 0.5))
-                
-                BackCardView(
-                    width: 340,
-                    backgroundColor: Color("card3"))
-                    .offset(x: 0, y: isDragging ? -200 : -20.0)
-                    .offset(dragTranslation)
-                    .offset(y: showCardDetail ? -130 : 0)
-                    .scaleEffect(showCardDetail ? 1 : 0.95)
-                    .rotationEffect(.degrees(isDragging ? 0 : 5))
-                    .rotationEffect(.degrees(showCardDetail ? -5 : 0))
-                    .rotation3DEffect(
-                        .degrees(showCardDetail ? 0 : 5),
-                        axis: (x: 10.0, y: 0.0, z: 0.0)
-                    )
-                    .blendMode(.hardLight)
-                    .animation(.easeInOut(duration: 0.3))
-                
-                CardView()
-                    .frame(width: showCardDetail ? .infinity : 340, height: 220)
-                    .background(Color.black)
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: showCardDetail ? 30 : 20, style: .continuous
-                        )
-                    )
-                    .shadow(radius: 20)
-                    .offset(dragTranslation)
-                    .offset(y: showCardDetail ? -100 : 0)
-                    .blendMode(.hardLight)
-                    .animation(Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
-                    .onTapGesture {
-                        self.showCardDetail.toggle()
-                    }
-                    .gesture(dragGesture)
+        let bottomCardDragGesture = DragGesture()
+            .onChanged { value in
+                if value.translation.height < -300 {
+                    return
+                }
+                self.bottomCardTranslation = value.translation
             }
-            .zIndex(isDragging ? 4 : 2)
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity)
-            
-            BottomCardView()
-                .offset(y: showCardDetail ? 360 : 1000)
-                .blur(radius: isDragging ? 10.0 : 0)
-                .zIndex(3)
-                .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8))
+            .onEnded { value in
+                if (value.translation.height > 100 || value.predictedEndTranslation.height > 200) {
+                    self.showCardDetail = false
+                }
+                self.bottomCardTranslation = .zero
+            }
+        return ZStack {
+                TitleView()
+                    .blur(radius: isDragging ? 10.0 : 0)
+                    .opacity(showCardDetail ? 0.4 : 1)
+                    .offset(y: showCardDetail ? -100 : 0)
+                    .animation(
+                        Animation.default
+                            .delay(0.1)
+                        //.speed(2)
+                        //.repeatForever()
+                    )
+                
+                ZStack {
+                    BackCardView(
+                        width: showCardDetail ? 300 : 340,
+                        backgroundColor: Color("card4"))
+                        .offset(x: 0, y: isDragging ? -400 : -40.0)
+                        .offset(dragTranslation)
+                        .offset(y: showCardDetail ? -160 : 0)
+                        .scaleEffect(showCardDetail ? 1 : 0.9)
+                        .rotationEffect(.degrees(isDragging ? 0 : 10))
+                        .rotationEffect(.degrees(showCardDetail ? -10 : 0))
+                        .rotation3DEffect(
+                            .degrees(showCardDetail ? 0 : 10),
+                            axis: (x: 10.0, y: 0.0, z: 0.0)
+                        )
+                        .blendMode(.hardLight)
+                        .animation(.easeInOut(duration: 0.5))
+                    
+                    BackCardView(
+                        width: 340,
+                        backgroundColor: Color("card3"))
+                        .offset(x: 0, y: isDragging ? -200 : -20.0)
+                        .offset(dragTranslation)
+                        .offset(y: showCardDetail ? -130 : 0)
+                        .scaleEffect(showCardDetail ? 1 : 0.95)
+                        .rotationEffect(.degrees(isDragging ? 0 : 5))
+                        .rotationEffect(.degrees(showCardDetail ? -5 : 0))
+                        .rotation3DEffect(
+                            .degrees(showCardDetail ? 0 : 5),
+                            axis: (x: 10.0, y: 0.0, z: 0.0)
+                        )
+                        .blendMode(.hardLight)
+                        .animation(.easeInOut(duration: 0.3))
+                    
+                    CardView()
+                        .frame(width: showCardDetail ? .infinity : 340, height: 220)
+                        .background(Color.black)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: showCardDetail ? 30 : 20, style: .continuous
+                            )
+                        )
+                        .shadow(radius: 20)
+                        .offset(dragTranslation)
+                        .offset(y: showCardDetail ? -100 : 0)
+                        .blendMode(.hardLight)
+                        .animation(Animation.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
+                        .onTapGesture {
+                            self.showCardDetail.toggle()
+                        }
+                        .gesture(cardDragGesture)
+                }
+                .zIndex(isDragging ? 4 : 2)
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity)
+                
+                BottomCardView()
+                    .offset(y: showCardDetail ? 360 : 1000)
+                    .offset(y: bottomCardTranslation.height)
+                    .blur(radius: isDragging ? 10.0 : 0)
+                    .zIndex(3)
+                    .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8))
+                    .gesture(bottomCardDragGesture)
+            }
         }
-    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
