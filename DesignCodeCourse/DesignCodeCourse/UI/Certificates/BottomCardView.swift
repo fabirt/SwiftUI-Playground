@@ -27,7 +27,7 @@ struct BottomCardView: View {
             }
         
         return BottomCardViewContent()
-            .offset(y: show ? 360 : 1000)
+            .offset(y: show ? 360 : screen.height)
             .offset(y: translation.height)
             .zIndex(3)
             .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8))
