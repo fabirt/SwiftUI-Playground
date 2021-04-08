@@ -58,16 +58,19 @@ fileprivate struct MenuRow: View {
     let iconName: String
     
     var body: some View {
-        HStack(spacing: 16) {
-            Image(systemName: iconName)
-                .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
-                .font(.system(size: 20, weight: .light))
-                .imageScale(.large)
-                .frame(width: 32, height: 32)
-            Text(title)
-                .font(.system(size: 20, weight: .bold, design: .default))
-                .frame(width: 120, alignment: .leading)
-        }
+        Button(action: {}, label: {
+            HStack(spacing: 16) {
+                Image(systemName: iconName)
+                    .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+                    .font(.system(size: 20, weight: .light))
+                    .imageScale(.large)
+                    .frame(width: 32, height: 32)
+                Text(title)
+                    .foregroundColor(.black)
+                    .font(.system(size: 20, weight: .bold, design: .default))
+                    .frame(width: 120, alignment: .leading)
+            }
+        })
     }
 }
 
