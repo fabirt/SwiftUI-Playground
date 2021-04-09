@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SectionItem: Identifiable {
-    var id = UUID()
-    var title: String
-    var subtitle: String
-    var logoName: String
-    var image: Image
-    var backgroundColor: Color
+    let id = UUID()
+    let title: String
+    let subtitle: String
+    let logoName: String
+    let image: Image
+    let backgroundColor: Color
 }

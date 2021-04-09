@@ -27,4 +27,12 @@ var homeSections = [
         backgroundColor: Color("card3"))
 ]
 
+let updatesData = [
+    UpdateItem(title: "SwiftUI Advanced", imageName: "Card1", body: "Take your SwiftUI app to the App Store with advanced techniques like API data, packages and CMS.", date: Date()),
+    UpdateItem(title: "Webflow", imageName: "Card2", body: "Design and animate a high converting landing page with advanced interactions, payments and CMS", date: Date()),
+    UpdateItem(title: "ProtoPie", imageName: "Card3", body: "Quickly prototype advanced animations and interactions for mobile and Web.", date: Date()),
+    UpdateItem(title: "SwiftUI", imageName: "Card4", body: "Learn how to code custom UIs, animations, gestures and components in Xcode 11", date: Date()),
+    UpdateItem(title: "Framer Playground", imageName: "Card5", body: "Create powerful animations and interactions with the Framer X code editor", date: Date())
+]
+
 

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		055119F1261FF46A002C782C /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055119F0261FF46A002C782C /* SectionItem.swift */; };
 		055119F5261FF54D002C782C /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055119F4261FF54D002C782C /* DemoData.swift */; };
+		056723E52620931A00B22608 /* UpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056723E42620931A00B22608 /* UpdatesView.swift */; };
+		056723E82620979300B22608 /* UpdateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056723E72620979300B22608 /* UpdateItem.swift */; };
+		056723EB2620993B00B22608 /* UpdateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056723EA2620993B00B22608 /* UpdateDetailView.swift */; };
 		05691186261E5B9A00DAB710 /* CertificatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05691185261E5B9A00DAB710 /* CertificatesView.swift */; };
 		05691189261E5BD400DAB710 /* BackCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05691188261E5BD400DAB710 /* BackCardView.swift */; };
 		0569118C261E5C5000DAB710 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0569118B261E5C5000DAB710 /* TitleView.swift */; };
@@ -26,6 +29,9 @@
 /* Begin PBXFileReference section */
 		055119F0261FF46A002C782C /* SectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
 		055119F4261FF54D002C782C /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
+		056723E42620931A00B22608 /* UpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesView.swift; sourceTree = "<group>"; };
+		056723E72620979300B22608 /* UpdateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItem.swift; sourceTree = "<group>"; };
+		056723EA2620993B00B22608 /* UpdateDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetailView.swift; sourceTree = "<group>"; };
 		05691185261E5B9A00DAB710 /* CertificatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatesView.swift; sourceTree = "<group>"; };
 		05691188261E5BD400DAB710 /* BackCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardView.swift; sourceTree = "<group>"; };
 		0569118B261E5C5000DAB710 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				055119F0261FF46A002C782C /* SectionItem.swift */,
+				056723E72620979300B22608 /* UpdateItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -77,6 +84,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		056723E3262092DC00B22608 /* Updates */ = {
+			isa = PBXGroup;
+			children = (
+				056723E42620931A00B22608 /* UpdatesView.swift */,
+				056723EA2620993B00B22608 /* UpdateDetailView.swift */,
+			);
+			path = Updates;
+			sourceTree = "<group>";
+		};
 		05691183261E5B7300DAB710 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +100,7 @@
 				05691199261E7C5D00DAB710 /* Home */,
 				05691195261E6A4E00DAB710 /* Menu */,
 				05691184261E5B7B00DAB710 /* Certificates */,
+				056723E3262092DC00B22608 /* Updates */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -236,10 +253,13 @@
 				055119F1261FF46A002C782C /* SectionItem.swift in Sources */,
 				05691197261E6A5C00DAB710 /* MenuView.swift in Sources */,
 				0569118F261E5C7C00DAB710 /* CertificateCardView.swift in Sources */,
+				056723EB2620993B00B22608 /* UpdateDetailView.swift in Sources */,
 				05691192261E5CAF00DAB710 /* BottomCardView.swift in Sources */,
 				05691186261E5B9A00DAB710 /* CertificatesView.swift in Sources */,
 				05CC006E261D45B30094850D /* DesignCodeCourseApp.swift in Sources */,
+				056723E82620979300B22608 /* UpdateItem.swift in Sources */,
 				0569119E261E9A0600DAB710 /* RootView.swift in Sources */,
+				056723E52620931A00B22608 /* UpdatesView.swift in Sources */,
 				0569119B261E7C6A00DAB710 /* HomeView.swift in Sources */,
 				05691189261E5BD400DAB710 /* BackCardView.swift in Sources */,
 				0569118C261E5C5000DAB710 /* TitleView.swift in Sources */,
