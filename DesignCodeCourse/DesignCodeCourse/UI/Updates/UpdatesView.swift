@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct UpdatesView: View {
+    @ObservedObject private var viewModel = UpdatesViewModel()
+    @State private var allowAnimations : Bool = false
+    
     var body: some View {
         NavigationView {
-            List(updatesData) { item in
-                NavigationLink(destination: UpdateDetailView(item: item)) {
-                    UpdateView(item: item)
+            List {
+                ForEach(viewModel.updates) { item in
+                    NavigationLink(destination: UpdateDetailView(item: item)) {
+                        UpdateView(item: item)
+                    }
+                }
+                .onDelete { indexSet in
+                    viewModel.removeUpdate(at: indexSet.first!)
+                }
+                .onMove { indices, newOffset in
+                    viewModel.moveUpdate(from: indices, to: newOffset)
                 }
             }
+            .animation(allowAnimations ? .default : nil)
             .navigationTitle("Updates")
+            .navigationBarItems(
+                leading: Button(action: viewModel.addUpdate) {
+                    Text("Add update")
+                },
+                trailing: EditButton()
+            )
+            .onAppear {
+                DispatchQueue.main.async {
+                    self.allowAnimations = true
+                }
+            }
         }
     }
 }
