@@ -22,9 +22,17 @@ struct HomeView: View {
             .padding(.top, 30)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 30) {
+                HStack(spacing: 20) {
                     ForEach(homeSections) { item in
-                        SectionView(item: item)
+                        GeometryReader { (geometry: GeometryProxy) in
+                            let degrees = Double(geometry.frame(in: .global).minX - 30) / -20
+                            
+                            SectionView(item: item)
+                                .rotation3DEffect(
+                                    .degrees(degrees),
+                                    axis: (x: 0.0, y: 1.0, z: 0.0)
+                                )
+                        }.frame(width: 292, height: 276)
                     }
                 }
                 .padding(.top, 8)
