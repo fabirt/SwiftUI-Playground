@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MenuView: View {
+struct ProfileMenuView: View {
     var body: some View {
         let progress = 0.38
         let progressFormatter = NumberFormatter()
@@ -97,8 +97,8 @@ fileprivate struct ProfileProgressView: View {
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
+struct ProfileMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        ProfileMenuView()
     }
 }

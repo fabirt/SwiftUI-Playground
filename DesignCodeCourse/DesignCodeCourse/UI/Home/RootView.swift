@@ -33,7 +33,7 @@ struct RootView: View {
                 )
                 .animation(springAnimation)
             
-            MenuView()
+            ProfileMenuView()
                 .contentShape(Rectangle()) // Make it interactive
                 .offset(y: showMenu ? 0 : screen.height)
                 .offset(y: menuTranslation.height)
