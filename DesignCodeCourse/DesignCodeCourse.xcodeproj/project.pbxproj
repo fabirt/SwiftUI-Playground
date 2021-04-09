@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		055119F1261FF46A002C782C /* SectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055119F0261FF46A002C782C /* SectionItem.swift */; };
+		055119F5261FF54D002C782C /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055119F4261FF54D002C782C /* DemoData.swift */; };
 		05691186261E5B9A00DAB710 /* CertificatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05691185261E5B9A00DAB710 /* CertificatesView.swift */; };
 		05691189261E5BD400DAB710 /* BackCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05691188261E5BD400DAB710 /* BackCardView.swift */; };
 		0569118C261E5C5000DAB710 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0569118B261E5C5000DAB710 /* TitleView.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		055119F0261FF46A002C782C /* SectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItem.swift; sourceTree = "<group>"; };
+		055119F4261FF54D002C782C /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
 		05691185261E5B9A00DAB710 /* CertificatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatesView.swift; sourceTree = "<group>"; };
 		05691188261E5BD400DAB710 /* BackCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardView.swift; sourceTree = "<group>"; };
 		0569118B261E5C5000DAB710 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		055119EE261FF406002C782C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				055119EF261FF41A002C782C /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		055119EF261FF41A002C782C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				055119F0261FF46A002C782C /* SectionItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		055119F3261FF53F002C782C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				055119F4261FF54D002C782C /* DemoData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		05691183261E5B7300DAB710 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +144,8 @@
 		05CC006C261D45B30094850D /* DesignCodeCourse */ = {
 			isa = PBXGroup;
 			children = (
+				055119F3261FF53F002C782C /* Data */,
+				055119EE261FF406002C782C /* Domain */,
 				05691183261E5B7300DAB710 /* UI */,
 				05CC006D261D45B30094850D /* DesignCodeCourseApp.swift */,
 				05CC0071261D45B50094850D /* Assets.xcassets */,
@@ -202,6 +232,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				055119F5261FF54D002C782C /* DemoData.swift in Sources */,
+				055119F1261FF46A002C782C /* SectionItem.swift in Sources */,
 				05691197261E6A5C00DAB710 /* MenuView.swift in Sources */,
 				0569118F261E5C7C00DAB710 /* CertificateCardView.swift in Sources */,
 				05691192261E5CAF00DAB710 /* BottomCardView.swift in Sources */,

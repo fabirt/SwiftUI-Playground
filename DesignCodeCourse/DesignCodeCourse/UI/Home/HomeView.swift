@@ -23,8 +23,8 @@ struct HomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
-                    ForEach(0 ..< 5) { item in
-                        SectionView()
+                    ForEach(homeSections) { item in
+                        SectionView(item: item)
                     }
                 }
                 .padding(.top, 8)
@@ -53,30 +53,32 @@ fileprivate struct AvatarMenuButton: View {
 }
 
 fileprivate struct SectionView: View {
+    let item: SectionItem
+    
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Text("Prototype designs in SwiftUI")
+                Text(item.title)
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
                     .frame(width: 160, alignment: .leading)
                 Spacer()
-                Image("Logo1")
+                Image(item.logoName)
             }
-            Text("18 Sections".uppercased())
+            Text(item.subtitle.uppercased())
                 .font(.system(size: 15, weight: .medium))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Image("Card2")
+            item.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
         .frame(width: 260, height: 260)
         .padding(.horizontal)
         .padding(.top)
-        .background(Color("card1"))
+        .background(item.backgroundColor)
         .cornerRadius(30)
-        .shadow(color: Color("card1").opacity(0.3), radius: 20, x: 0.0, y: 20.0)
+        .shadow(color: item.backgroundColor.opacity(0.3), radius: 20, x: 0.0, y: 20.0)
     }
 }
 
