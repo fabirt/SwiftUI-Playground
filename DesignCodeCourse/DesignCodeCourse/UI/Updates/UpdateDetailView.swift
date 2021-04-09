@@ -11,7 +11,19 @@ struct UpdateDetailView: View {
     let item: UpdateItem
     
     var body: some View {
-        Text(item.title)
+        ScrollView {
+            VStack {
+                Image(item.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                Text(item.body)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(8)
+            }
+            .padding(.top)
+            .navigationBarTitle(item.title)
+        }
     }
 }
 
