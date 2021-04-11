@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		056911A3261EA03500DAB710 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056911A2261EA03500DAB710 /* UIScreen.swift */; };
 		057B28E126235135005C59E2 /* CourseComplexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B28E026235135005C59E2 /* CourseComplexView.swift */; };
 		057B28E426235FC7005C59E2 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B28E326235FC7005C59E2 /* CloseButton.swift */; };
+		057B28E826238AB7005C59E2 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 057B28E726238AB7005C59E2 /* SwiftUIX */; };
 		05A65C60262263C400FEA4D5 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C5F262263C400FEA4D5 /* RingView.swift */; };
 		05A65C6426226F5200FEA4D5 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C6326226F5200FEA4D5 /* Number.swift */; };
 		05A65C68262286D200FEA4D5 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C67262286D200FEA4D5 /* Modifiers.swift */; };
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057B28E826238AB7005C59E2 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +252,9 @@
 			dependencies = (
 			);
 			name = DesignCodeCourse;
+			packageProductDependencies = (
+				057B28E726238AB7005C59E2 /* SwiftUIX */,
+			);
 			productName = DesignCodeCourse;
 			productReference = 05CC006A261D45B30094850D /* DesignCodeCourse.app */;
 			productType = "com.apple.product-type.application";
@@ -277,6 +282,9 @@
 				Base,
 			);
 			mainGroup = 05CC0061261D45B30094850D;
+			packageReferences = (
+				057B28E626238AB7005C59E2 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
 			productRefGroup = 05CC006B261D45B30094850D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -514,6 +522,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		057B28E626238AB7005C59E2 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		057B28E726238AB7005C59E2 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057B28E626238AB7005C59E2 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 05CC0062261D45B30094850D /* Project object */;
 }

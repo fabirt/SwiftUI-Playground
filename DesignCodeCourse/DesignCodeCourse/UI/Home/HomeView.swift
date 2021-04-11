@@ -25,6 +25,7 @@ struct HomeView: View {
                         .font(.system(size: 28, weight: .bold))
                     Spacer()
                     AvatarMenuButton(showMenu: $showMenu)
+                        .proShadow()
                     
                     Button(action: { self.showUpdates.toggle() }) {
                         Image(systemName: "bell")
@@ -33,8 +34,7 @@ struct HomeView: View {
                             .frame(width: 36, height: 36)
                             .background(Color.white)
                             .clipShape(Circle())
-                            .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
-                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                            .proShadow()
                     }
                     .sheet(isPresented: $showUpdates, content: {
                         UpdatesView()

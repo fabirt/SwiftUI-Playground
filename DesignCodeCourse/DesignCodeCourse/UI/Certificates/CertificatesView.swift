@@ -25,6 +25,8 @@ struct CertificatesView: View {
             BottomCardView(
                 show: $showCardDetail,
                 translation: $bottomCardTranslation)
+            
+            
         }
     }
 }

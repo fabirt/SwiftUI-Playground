@@ -38,6 +38,7 @@ struct ProfileMenuView: View {
                     .frame(width: 60, height: 60)
                     .clipShape(Circle())
                     .offset(y: -150)
+                    .proShadow()
             )
         }
         .padding(.bottom, 30)
