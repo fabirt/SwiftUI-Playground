@@ -86,11 +86,7 @@ struct RootView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Image(systemName: "xmark")
-                            .frame(width: 36, height: 36)
-                            .foregroundColor(.white)
-                            .background(Color.black)
-                            .clipShape(Circle())
+                        CloseButton()
                             .onTapGesture {
                                 self.showWatchingContent = false
                         }

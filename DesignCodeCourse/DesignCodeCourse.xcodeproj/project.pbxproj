@@ -23,6 +23,8 @@
 		0569119B261E7C6A00DAB710 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0569119A261E7C6A00DAB710 /* HomeView.swift */; };
 		0569119E261E9A0600DAB710 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0569119D261E9A0600DAB710 /* RootView.swift */; };
 		056911A3261EA03500DAB710 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056911A2261EA03500DAB710 /* UIScreen.swift */; };
+		057B28E126235135005C59E2 /* CourseComplexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B28E026235135005C59E2 /* CourseComplexView.swift */; };
+		057B28E426235FC7005C59E2 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B28E326235FC7005C59E2 /* CloseButton.swift */; };
 		05A65C60262263C400FEA4D5 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C5F262263C400FEA4D5 /* RingView.swift */; };
 		05A65C6426226F5200FEA4D5 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C6326226F5200FEA4D5 /* Number.swift */; };
 		05A65C68262286D200FEA4D5 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C67262286D200FEA4D5 /* Modifiers.swift */; };
@@ -51,6 +53,8 @@
 		0569119A261E7C6A00DAB710 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0569119D261E9A0600DAB710 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		056911A2261EA03500DAB710 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		057B28E026235135005C59E2 /* CourseComplexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseComplexView.swift; sourceTree = "<group>"; };
+		057B28E326235FC7005C59E2 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		05A65C5F262263C400FEA4D5 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		05A65C6326226F5200FEA4D5 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		05A65C67262286D200FEA4D5 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				05A65C6A262292C800FEA4D5 /* WatchingsView.swift */,
 				05A65C6D2622C32C00FEA4D5 /* CoursesListView.swift */,
 				05A65C702622C3F300FEA4D5 /* CourseDetailView.swift */,
+				057B28E026235135005C59E2 /* CourseComplexView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			children = (
 				05A65C66262286A800FEA4D5 /* Modifiers */,
 				056911A2261EA03500DAB710 /* UIScreen.swift */,
+				057B28E326235FC7005C59E2 /* CloseButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -311,6 +317,8 @@
 				05CC006E261D45B30094850D /* DesignCodeCourseApp.swift in Sources */,
 				056723E82620979300B22608 /* UpdateItem.swift in Sources */,
 				0569119E261E9A0600DAB710 /* RootView.swift in Sources */,
+				057B28E126235135005C59E2 /* CourseComplexView.swift in Sources */,
+				057B28E426235FC7005C59E2 /* CloseButton.swift in Sources */,
 				056723E52620931A00B22608 /* UpdatesView.swift in Sources */,
 				05A65C6426226F5200FEA4D5 /* Number.swift in Sources */,
 				05A65C60262263C400FEA4D5 /* RingView.swift in Sources */,
