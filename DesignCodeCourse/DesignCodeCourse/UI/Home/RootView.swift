@@ -34,16 +34,16 @@ struct RootView: View {
                         .frame(maxHeight: .infinity, alignment: .top)
                         .background(Color.white)
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: showMenu ? 30.0 : 0, style: .continuous))
-                    .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0.0, y: 20.0)
-                    .ignoresSafeArea()
-                
+                    
                 HomeView(
                     showMenu: $showMenu,
                     showWatchingContent: $showWatchingContent,
                     showCourseDetail: $showCourseDetail
                 )
+                .safeArea(bottom: false)
             }
+            .clipShape(RoundedRectangle(cornerRadius: showMenu ? 30.0 : 0, style: .continuous))
+            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0.0, y: 20.0)
             .scaleEffect(showMenu ? 0.9 : 1)
             .offset(y: showMenu ? -450 : 0)
             .offset(y: menuTranslation.height * 0.1)
@@ -51,6 +51,7 @@ struct RootView: View {
                 .degrees(showMenu ? Double(menuTranslation.height * 0.1) - 10.0 : 0),
                 axis: (x: 10.0, y: 0.0, z: 0.0)
             )
+            .edgesIgnoringSafeArea(.top)
             .animation(springAnimation)
             
             ProfileMenuView()
