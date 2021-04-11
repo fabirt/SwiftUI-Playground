@@ -101,7 +101,7 @@ fileprivate struct CertificateCardViewContent: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                     Text("Certificate")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(.systemBlue)
                 }
                 Spacer()
                 Image("Logo1")

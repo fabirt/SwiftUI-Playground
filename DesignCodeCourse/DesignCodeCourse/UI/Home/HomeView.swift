@@ -96,6 +96,7 @@ struct HomeView: View {
                 
                 CoursesListView()
             }
+            .padding(.bottom, 30)
         }
     }
 }

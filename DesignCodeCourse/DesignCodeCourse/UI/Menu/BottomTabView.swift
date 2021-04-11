@@ -22,6 +22,7 @@ struct BottomTabView: View {
                     Text("Certificates")
                 }
         }
+        .accentColor(Color("card3"))
     }
 }
 
