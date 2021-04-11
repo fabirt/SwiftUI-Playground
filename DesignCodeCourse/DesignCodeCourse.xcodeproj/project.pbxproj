@@ -26,6 +26,7 @@
 		05A65C60262263C400FEA4D5 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C5F262263C400FEA4D5 /* RingView.swift */; };
 		05A65C6426226F5200FEA4D5 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C6326226F5200FEA4D5 /* Number.swift */; };
 		05A65C68262286D200FEA4D5 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C67262286D200FEA4D5 /* Modifiers.swift */; };
+		05A65C6B262292C800FEA4D5 /* WatchingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A65C6A262292C800FEA4D5 /* WatchingsView.swift */; };
 		05CC006E261D45B30094850D /* DesignCodeCourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC006D261D45B30094850D /* DesignCodeCourseApp.swift */; };
 		05CC0072261D45B50094850D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CC0071261D45B50094850D /* Assets.xcassets */; };
 		05CC0075261D45B50094850D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CC0074261D45B50094850D /* Preview Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		05A65C5F262263C400FEA4D5 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		05A65C6326226F5200FEA4D5 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		05A65C67262286D200FEA4D5 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		05A65C6A262292C800FEA4D5 /* WatchingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingsView.swift; sourceTree = "<group>"; };
 		05CC006A261D45B30094850D /* DesignCodeCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignCodeCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CC006D261D45B30094850D /* DesignCodeCourseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeCourseApp.swift; sourceTree = "<group>"; };
 		05CC0071261D45B50094850D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				0569119A261E7C6A00DAB710 /* HomeView.swift */,
 				0569119D261E9A0600DAB710 /* RootView.swift */,
+				05A65C6A262292C800FEA4D5 /* WatchingsView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				055119F5261FF54D002C782C /* DemoData.swift in Sources */,
 				055119F1261FF46A002C782C /* SectionItem.swift in Sources */,
 				05691197261E6A5C00DAB710 /* ProfileMenuView.swift in Sources */,
+				05A65C6B262292C800FEA4D5 /* WatchingsView.swift in Sources */,
 				056723EE2620A71000B22608 /* UpdatesViewModel.swift in Sources */,
 				05A65C68262286D200FEA4D5 /* Modifiers.swift in Sources */,
 				0569118F261E5C7C00DAB710 /* CertificateCardView.swift in Sources */,

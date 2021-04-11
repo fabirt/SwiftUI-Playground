@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     @State var showMenu = false
+    @State var showWatchingContent = false
     @State var menuTranslation = CGSize.zero
     
     var body: some View {
@@ -20,8 +21,17 @@ struct RootView: View {
         return ZStack {
             Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)).ignoresSafeArea()
             
-            HomeView(showMenu: $showMenu)
-                .background(Color.white)
+            HomeView(showMenu: $showMenu, showWatchingContent: $showWatchingContent)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color("background2"), Color.white]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .frame(height: 200)
+                    .frame(maxHeight: .infinity, alignment: .top)
+                    .background(Color.white)
+                )
                 .clipShape(RoundedRectangle(cornerRadius: showMenu ? 30.0 : 0, style: .continuous))
                 .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0.0, y: 20.0)
                 .scaleEffect(showMenu ? 0.9 : 1)
@@ -53,6 +63,33 @@ struct RootView: View {
                             self.menuTranslation = .zero
                         }
                 )
+            
+            if showWatchingContent {
+                Color.white.ignoresSafeArea()
+                    .zIndex(2.0)
+
+                CertificatesView()
+                    .zIndex(3.0)
+                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.2)))
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "xmark")
+                            .frame(width: 36, height: 36)
+                            .foregroundColor(.white)
+                            .background(Color.black)
+                            .clipShape(Circle())
+                            .onTapGesture {
+                                self.showWatchingContent = false
+                        }
+                    }.padding(8)
+                    Spacer()
+                }
+                .zIndex(4.0)
+                .transition(AnyTransition.move(edge: .top))
+                .animation(.spring())
+            }
         }
     }
 }
