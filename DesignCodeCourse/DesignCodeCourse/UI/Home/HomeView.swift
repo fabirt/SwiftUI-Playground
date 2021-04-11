@@ -10,7 +10,12 @@ import SwiftUI
 struct HomeView: View {
     @Binding var showMenu: Bool
     @Binding var showWatchingContent: Bool
+    @Binding var showCourseDetail: AnyView?
     @State private var showUpdates = false
+    @Namespace private var sharedAnim
+    
+    private let transitionAnimation = Animation.easeInOut
+
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -49,6 +54,15 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
                         ForEach(homeSections) { item in
+                            let detailView = AnyView(
+                                CourseDetailView(item: item) {
+                                    withAnimation(transitionAnimation) {
+                                        self.showCourseDetail = nil
+                                    }
+                                }
+                                .matchedGeometryEffect(id: item.id, in: sharedAnim)
+                            )
+                            
                             GeometryReader { (geometry: GeometryProxy) in
                                 let degrees = Double(geometry.frame(in: .global).minX - 30) / -20
                                 
@@ -57,6 +71,12 @@ struct HomeView: View {
                                         .degrees(degrees),
                                         axis: (x: 0.0, y: 1.0, z: 0.0)
                                     )
+                                    .matchedGeometryEffect(id: item.id, in: sharedAnim)
+                                    .onTapGesture {
+                                        withAnimation(transitionAnimation) {
+                                            self.showCourseDetail = detailView
+                                        }
+                                    }
                             }.frame(width: 292, height: 276)
                         }
                     }
@@ -74,13 +94,7 @@ struct HomeView: View {
                 .padding(.horizontal, 30)
                 .padding(.bottom)
                 
-                SectionView(item: homeSections[2], size: screen.width - 92)
-                    .padding(.bottom)
-                
-                SectionView(item: homeSections[1], size: screen.width - 92)
-                    .padding(.bottom)
-                
-                Spacer()
+                CoursesListView()
             }
         }
     }
@@ -101,7 +115,7 @@ fileprivate struct AvatarMenuButton: View {
     }
 }
 
-fileprivate struct SectionView: View {
+struct SectionView: View {
     let item: SectionItem
     var size: CGFloat = 260
     
@@ -135,6 +149,10 @@ fileprivate struct SectionView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(showMenu: .constant(false), showWatchingContent: .constant(false))
+        HomeView(
+            showMenu: .constant(false),
+            showWatchingContent: .constant(false),
+            showCourseDetail: .constant(nil)
+        )
     }
 }

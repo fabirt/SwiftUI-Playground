@@ -11,7 +11,8 @@ struct RootView: View {
     @State var showMenu = false
     @State var showWatchingContent = false
     @State var menuTranslation = CGSize.zero
-    
+    @State var showCourseDetail: AnyView?
+
     var body: some View {
         let springAnimation = Animation.spring(
             response: 0.5,
@@ -37,7 +38,11 @@ struct RootView: View {
                     .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0.0, y: 20.0)
                     .ignoresSafeArea()
                 
-                HomeView(showMenu: $showMenu, showWatchingContent: $showWatchingContent)
+                HomeView(
+                    showMenu: $showMenu,
+                    showWatchingContent: $showWatchingContent,
+                    showCourseDetail: $showCourseDetail
+                )
             }
             .scaleEffect(showMenu ? 0.9 : 1)
             .offset(y: showMenu ? -450 : 0)
@@ -94,6 +99,11 @@ struct RootView: View {
                 .zIndex(4.0)
                 .transition(AnyTransition.move(edge: .top))
                 .animation(.spring())
+            }
+            
+            if showCourseDetail != nil {
+                showCourseDetail
+                    .zIndex(5.0)
             }
         }
     }
