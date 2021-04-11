@@ -26,7 +26,7 @@ struct BottomCardView: View {
                 self.translation = .zero
             }
         
-        return BottomCardViewContent()
+        return BottomCardViewContent(show: $show)
             .offset(y: show ? 360 : screen.height)
             .offset(y: translation.height)
             .zIndex(3)
@@ -36,6 +36,8 @@ struct BottomCardView: View {
 }
 
 fileprivate struct BottomCardViewContent: View {
+    @Binding var show: Bool
+    
     var body: some View {
         VStack(spacing: 20) {
             Rectangle()
@@ -46,6 +48,22 @@ fileprivate struct BottomCardViewContent: View {
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .lineSpacing(4)
+            HStack(spacing: 20) {
+                RingView(progress: 20 / 25, size: 88.0, startColor: Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), endColor: Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)), show: $show)
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("SwiftUI")
+                        .fontWeight(.bold)
+                    Text("20 of 25 sections completed\n10 hours spent so far")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .lineSpacing(4.0)
+                }
+                .padding()
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 10)
+            }
             Spacer()
         }
         .padding(.horizontal, 20)

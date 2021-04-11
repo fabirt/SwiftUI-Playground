@@ -10,14 +10,11 @@ import SwiftUI
 struct ProfileMenuView: View {
     var body: some View {
         let progress = 0.38
-        let progressFormatter = NumberFormatter()
-        progressFormatter.numberStyle = .percent
-        let percent = progressFormatter.string(from: NSNumber(value: progress)) ?? "0%"
         
         return VStack {
             Spacer()
             VStack(spacing: 16) {
-                Text("Fabián - \(percent) complete")
+                Text("Fabián - \(NSNumber(value: progress).toPercent()) complete")
                     .font(.caption)
                     .fontWeight(.medium)
                     .foregroundColor(Color(#colorLiteral(red: 0.3450980392, green: 0.3843137255, blue: 0.4431372549, alpha: 1)))
