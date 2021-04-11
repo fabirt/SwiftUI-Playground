@@ -21,27 +21,32 @@ struct RootView: View {
         return ZStack {
             Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)).ignoresSafeArea()
             
-            HomeView(showMenu: $showMenu, showWatchingContent: $showWatchingContent)
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: [Color("background2"), Color.white]),
-                        startPoint: .top,
-                        endPoint: .bottom
+            ZStack {
+                Spacer()
+                    .background(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color("background2"), Color.white]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .frame(height: 200)
+                        .frame(maxHeight: .infinity, alignment: .top)
+                        .background(Color.white)
                     )
-                    .frame(height: 200)
-                    .frame(maxHeight: .infinity, alignment: .top)
-                    .background(Color.white)
-                )
-                .clipShape(RoundedRectangle(cornerRadius: showMenu ? 30.0 : 0, style: .continuous))
-                .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0.0, y: 20.0)
-                .scaleEffect(showMenu ? 0.9 : 1)
-                .offset(y: showMenu ? -450 : 0)
-                .offset(y: menuTranslation.height * 0.1)
-                .rotation3DEffect(
-                    .degrees(showMenu ? Double(menuTranslation.height * 0.1) - 10.0 : 0),
-                    axis: (x: 10.0, y: 0.0, z: 0.0)
-                )
-                .animation(springAnimation)
+                    .clipShape(RoundedRectangle(cornerRadius: showMenu ? 30.0 : 0, style: .continuous))
+                    .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0.0, y: 20.0)
+                    .ignoresSafeArea()
+                
+                HomeView(showMenu: $showMenu, showWatchingContent: $showWatchingContent)
+            }
+            .scaleEffect(showMenu ? 0.9 : 1)
+            .offset(y: showMenu ? -450 : 0)
+            .offset(y: menuTranslation.height * 0.1)
+            .rotation3DEffect(
+                .degrees(showMenu ? Double(menuTranslation.height * 0.1) - 10.0 : 0),
+                axis: (x: 10.0, y: 0.0, z: 0.0)
+            )
+            .animation(springAnimation)
             
             ProfileMenuView()
                 .contentShape(Rectangle()) // Make it interactive
